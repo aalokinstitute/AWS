@@ -1,0 +1,149 @@
+
+************************************************************************************************************************
+Group/User Management Demo using aws cli by Ambasa:
+---------------------------------------------------
+Create Group/User:
+******************
+
+Step 1: Create Group called AIGP1
+Step 2: Attach Below Policies to Group 
+	PolicyName (Permissions policies) 
+		1. AmazonEC2FullAccess 2. AmazonRoute53FullAccess 3. AmazonS3FullAccess 4. AmazonVPCFullAccess 5. IAMFullAccess
+	or 	1. AdministratorAccess
+Step 3: Create User called AIu1
+Step 4: Add User AIu1 To Group AIGP1
+Step 5: Create Access Key for AIu1 User
+---------------------------------------------------------------------------------------------------------------------------------
+Delete Group/User:
+******************
+Step 1: Remove User AIu1 From Group AIGP1
+Step 2: Delete Access Key for AIu1 User
+Step 3: Delete User AIu1
+Step 4: Detach Below Policies From Group AIGP1
+Step 5: Delete Group AIGP1
+
+************************************************************************************************************************
+Create Group/User:
+******************
+
+Step 1: Create Group called AIGP1
+Step 2: Attach Below Policies to Group 
+	PolicyName (Permissions policies) 
+		1. AmazonEC2FullAccess 2. AmazonRoute53FullAccess 3. AmazonS3FullAccess 4. AmazonVPCFullAccess 5. IAMFullAccess
+	or 	1. AdministratorAccess
+Step 3: Create User called AIu1
+Step 4: Add User AIu1 To Group AIGP1
+Step 5: Create Access Key for AIu1 User
+
+
+
+Step 1: Create Group called AIGP1
+---------------------------------
+
+You can create the AIGP1 IAM user from the command line using the following:
+
+aws iam list-groups
+
+aws iam create-group --group-name AIGP1
+
+aws iam list-groups
+
+Step 2: Attach Below Policies to Group
+--------------------------------------
+
+aws iam list-attached-group-policies --group-name AIGP1
+
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess --group-name AIGP1
+or
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess --group-name AIGP1
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonRoute53FullAccess --group-name AIGP1
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess --group-name AIGP1
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/IAMFullAccess --group-name AIGP1
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonVPCFullAccess --group-name AIGP1
+
+aws iam list-attached-group-policies --group-name AIGP1
+
+Step 3: Create User called AIu1
+-------------------------------
+
+aws iam list-users
+
+aws iam create-user --user-name AIu1
+
+aws iam list-users
+
+
+Step 4: Add User AIu1 To Group AIGP1
+------------------------------------
+
+aws iam add-user-to-group --user-name AIu1 --group-name AIGP1
+
+
+Step 5: Create Access Key for AIu1 User
+---------------------------------------
+
+aws iam list-access-keys --user-name AIu1
+
+--aws iam list-access-keys
+
+aws iam create-access-key --user-name AIu1
+
+aws iam list-access-keys --user-name AIu1
+
+--aws iam list-access-keys
+
+
+******************************************************************************************************************************
+Delete Group/User:
+******************
+Step 1: Remove User AIu1 From Group AIGP1
+Step 2: Delete Access Key for AIu1 User
+Step 3: Delete User AIu1
+Step 4: Detach Below Policies From Group AIGP1
+Step 5: Delete Group AIGP1
+
+******************************************************************************************************************************
+
+Step 1: Remove User AIu1 From Group AIGP1
+-----------------------------------------
+aws iam list-access-keys
+
+aws iam remove-user-from-group --user-name AIu1  --group-name AIGP1
+
+Step 2: Delete Access Key for AIu1 User
+---------------------------------------
+
+aws iam  list-access-keys
+
+aws iam list-access-keys --user-name AI
+
+aws iam delete-access-key --access-key-id AKIAIO66SB89BGMQ5XYA --user-name AIu1
+
+aws iam list-users
+
+
+Step 3: Delete User AIu1
+------------------------
+
+aws iam delete-user --user-name AIu1
+
+
+Step 4: Detach Below Policies From Group AIGP1
+----------------------------------------------
+
+aws iam list-attached-group-policies --group-name AIGP1
+
+aws iam detach-group-policy --policy-arn arn:aws:iam::aws:policy/AdministrdeorAccess --group-name AIGP1
+or
+aws iam detach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess --group-name AIGP1
+aws iam detach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonRoute53FullAccess --group-name AIGP1
+aws iam detach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess --group-name AIGP1
+aws iam detach-group-policy --policy-arn arn:aws:iam::aws:policy/IAMFullAccess --group-name AIGP1
+aws iam detach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonVPCFullAccess --group-name AIGP1
+
+aws iam list-attached-group-policies --group-name AIGP1
+
+Step 5: Delete Group AIGP1
+--------------------------
+aws iam list-groups
+aws iam delete-group --group-name AIGP1
